@@ -222,7 +222,6 @@ export const DeleteAddress = async (req, res) => {
                 Address: { id: new mongoose.Types.ObjectId(req.params.id) }
             }
         })
-        console.log(userData);
         res.json(userData)
     } catch (error) {
         console.log(error)

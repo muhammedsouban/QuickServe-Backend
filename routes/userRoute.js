@@ -22,7 +22,7 @@ userRoute.post('/chat', verifyToken, userController.AddChat)
 userRoute.post('/conversation', verifyToken, userController.createConversation)
 userRoute.get('/chat', verifyToken, userController.getChat)
 userRoute.get('/media', userController.getMedia)
-userRoute.post('/review', verifyToken, userController.AddReview)
+userRoute.post('/review', userController.AddReview)
 userRoute.get('/service/:serviceId', userController.serviceDetails)
 userRoute.get('/review/:serviceId', userController.getReview)
 

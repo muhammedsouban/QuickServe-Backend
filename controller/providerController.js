@@ -138,8 +138,8 @@ export const sendBookingRequest = async (req, res) => {
 
 export const acceptRequest = async (req, res) => {
     try {
-        const services = req.body.data.services;
-        const bookingId = new mongoose.Types.ObjectId(req.body.data.bookingId);
+        const { services, bookingId: bookingIdString } = req.body.data;
+        const bookingId = new mongoose.Types.ObjectId(bookingIdString);
         const serviceIds = services.map((item) => new mongoose.Types.ObjectId(item.serviceId));
         const providerId = new mongoose.Types.ObjectId(req.provider.id);
 
@@ -296,10 +296,9 @@ export const completedBooking = async (req, res) => {
 
 export const startJob = async (req, res) => {
     try {
-        const services = req.body.data.services;
-        const bookingId = new mongoose.Types.ObjectId(req.body.data.bookingId);
+        const { services, bookingId: bookingIdString,BookingID } = req.body.data;
+        const bookingId = new mongoose.Types.ObjectId(bookingIdString);
         const serviceIds = services.map((item) => new mongoose.Types.ObjectId(item.serviceId));
-        const BookingID = req.body.data.BookingID
         
         const booking = await Booking.findByIdAndUpdate(
             { _id: bookingId, BookingID },
